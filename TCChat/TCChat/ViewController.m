@@ -17,6 +17,11 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	
+	[self valueForKey:@"fdsa"];
+	
+	
+	
 }
 
 - (void)didReceiveMemoryWarning {

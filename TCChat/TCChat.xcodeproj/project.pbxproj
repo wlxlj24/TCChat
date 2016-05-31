@@ -16,6 +16,11 @@
 		9625EC4C1CFD556C00F10793 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9625EC4A1CFD556C00F10793 /* LaunchScreen.storyboard */; };
 		9625EC571CFD556C00F10793 /* TCChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625EC561CFD556C00F10793 /* TCChatTests.m */; };
 		9625EC621CFD556C00F10793 /* TCChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625EC611CFD556C00F10793 /* TCChatUITests.m */; };
+		9625EC711CFD617F00F10793 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625EC701CFD617F00F10793 /* LoginViewController.m */; };
+		9625EC761CFD65B200F10793 /* tabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625EC751CFD65B200F10793 /* tabBarController.m */; };
+		9625EC7C1CFD660D00F10793 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625EC7B1CFD660D00F10793 /* SettingViewController.m */; };
+		9625EC7F1CFD661800F10793 /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625EC7E1CFD661800F10793 /* ContactsViewController.m */; };
+		9625EC821CFD662100F10793 /* ConversionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625EC811CFD662100F10793 /* ConversionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +59,16 @@
 		9625EC5D1CFD556C00F10793 /* TCChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TCChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9625EC611CFD556C00F10793 /* TCChatUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCChatUITests.m; sourceTree = "<group>"; };
 		9625EC631CFD556C00F10793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9625EC6F1CFD617F00F10793 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		9625EC701CFD617F00F10793 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		9625EC741CFD65B200F10793 /* tabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tabBarController.h; sourceTree = "<group>"; };
+		9625EC751CFD65B200F10793 /* tabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tabBarController.m; sourceTree = "<group>"; };
+		9625EC7A1CFD660D00F10793 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		9625EC7B1CFD660D00F10793 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		9625EC7D1CFD661800F10793 /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
+		9625EC7E1CFD661800F10793 /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		9625EC801CFD662100F10793 /* ConversionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversionViewController.h; sourceTree = "<group>"; };
+		9625EC811CFD662100F10793 /* ConversionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversionViewController.m; sourceTree = "<group>"; };
 		E5BAF1D0C1C7262B733898DF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +132,11 @@
 		9625EC3B1CFD556C00F10793 /* TCChat */ = {
 			isa = PBXGroup;
 			children = (
+				9625EC791CFD65F800F10793 /* Setting */,
+				9625EC781CFD65E500F10793 /* Contacts */,
+				9625EC771CFD65D100F10793 /* Conversion */,
+				9625EC731CFD659700F10793 /* Main */,
+				9625EC721CFD618700F10793 /* Login */,
 				9625EC3F1CFD556C00F10793 /* AppDelegate.h */,
 				9625EC401CFD556C00F10793 /* AppDelegate.m */,
 				9625EC421CFD556C00F10793 /* ViewController.h */,
@@ -154,6 +174,51 @@
 				9625EC631CFD556C00F10793 /* Info.plist */,
 			);
 			path = TCChatUITests;
+			sourceTree = "<group>";
+		};
+		9625EC721CFD618700F10793 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9625EC6F1CFD617F00F10793 /* LoginViewController.h */,
+				9625EC701CFD617F00F10793 /* LoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		9625EC731CFD659700F10793 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9625EC741CFD65B200F10793 /* tabBarController.h */,
+				9625EC751CFD65B200F10793 /* tabBarController.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		9625EC771CFD65D100F10793 /* Conversion */ = {
+			isa = PBXGroup;
+			children = (
+				9625EC801CFD662100F10793 /* ConversionViewController.h */,
+				9625EC811CFD662100F10793 /* ConversionViewController.m */,
+			);
+			name = Conversion;
+			sourceTree = "<group>";
+		};
+		9625EC781CFD65E500F10793 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				9625EC7D1CFD661800F10793 /* ContactsViewController.h */,
+				9625EC7E1CFD661800F10793 /* ContactsViewController.m */,
+			);
+			name = Contacts;
+			sourceTree = "<group>";
+		};
+		9625EC791CFD65F800F10793 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				9625EC7A1CFD660D00F10793 /* SettingViewController.h */,
+				9625EC7B1CFD660D00F10793 /* SettingViewController.m */,
+			);
+			name = Setting;
 			sourceTree = "<group>";
 		};
 		D8B1039FFD5B26DF28788301 /* Frameworks */ = {
@@ -345,9 +410,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9625EC711CFD617F00F10793 /* LoginViewController.m in Sources */,
 				9625EC441CFD556C00F10793 /* ViewController.m in Sources */,
+				9625EC821CFD662100F10793 /* ConversionViewController.m in Sources */,
+				9625EC761CFD65B200F10793 /* tabBarController.m in Sources */,
+				9625EC7F1CFD661800F10793 /* ContactsViewController.m in Sources */,
 				9625EC411CFD556C00F10793 /* AppDelegate.m in Sources */,
 				9625EC3E1CFD556C00F10793 /* main.m in Sources */,
+				9625EC7C1CFD660D00F10793 /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
