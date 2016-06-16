@@ -7,31 +7,74 @@
 //
 
 #import "ContactsViewController.h"
+#import <EMSDK.h>
 
-@interface ContactsViewController ()
+static NSString * const contactsCellId = @"contactsCellId";
+
+@interface ContactsViewController ()<UITableViewDelegate,UITableViewDataSource,EMClientDelegate>
+
+@property (nonatomic,readwrite,strong) NSArray *contactsArr;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation ContactsViewController
 
+-(void)dealloc{
+	[[EMClient sharedClient] removeDelegate:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+	
+	[[EMClient sharedClient] addDelegate:self delegateQueue:nil];
+	
+	self.contactsArr= [[EMClient sharedClient].contactManager getContactsFromDB];
+	if (self.contactsArr.count == 0) {
+		EMError *error = nil;
+		self.contactsArr = [[EMClient sharedClient].contactManager getContactsFromServerWithError:&error];
+		if (!error) {
+			NSLog(@"获取成功 -- %@",self.contactsArr);
+		}
+	}
+	
+	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:contactsCellId];
+	
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark <UITableViewDelegate,UITableViewDataSource>
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+	return self.contactsArr.count;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+	
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:contactsCellId forIndexPath:indexPath];
+	
+	cell.textLabel.text = self.contactsArr[indexPath.row];
+	
+	return cell;
 }
-*/
+
+/** 自动登录回调  */
+- (void)didAutoLoginWithError:(EMError *)aError{
+	
+	if (!aError) {
+		NSLog(@"登陆成功");
+		
+		EMError *error = nil;
+		self.contactsArr = [[EMClient sharedClient].contactManager getContactsFromServerWithError:&error];
+		if (!error) {
+			NSLog(@"获取好友列表成功");
+		}
+		[self.tableView reloadData];
+		
+		
+	}else{
+		NSLog(@"登陆失败 %@",aError);
+	}
+}
+
 
 @end

@@ -20,42 +20,56 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	[self cheakAutoLogin];
-	
-	[self valueForKey:@"fdsa"];
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
--(void)cheakAutoLogin{
-	EMError *error = [[EMClient sharedClient] loginWithUsername:@"8001" password:@"111111"];
-	if (!error)
-	{
-		[[EMClient sharedClient].options setIsAutoLogin:YES];
-	}
-}
-
+/** 登陆  */
 - (IBAction)onClickLoginBtn:(id)sender {
 	
-	EMError *error = [[EMClient sharedClient] registerWithUsername:@"8001" password:@"111111"];
-	if (error==nil) {
-		NSLog(@"注册成功");
+	BOOL isAutoLogin = [EMClient sharedClient].options.isAutoLogin;
+	
+	if (isAutoLogin) {
+		return;
 	}
+	
+	[[EMClient sharedClient] asyncLoginWithUsername:self.accountTF.text
+										   password:self.passwordTF.text
+											success:^{
+												NSLog(@"登陆成功");
+												[[EMClient sharedClient].options setIsAutoLogin:YES];
+												
+												[self dismissViewControllerAnimated:YES completion:nil];
+												
+											}
+											failure:^(EMError *aError) {
+												NSLog(@"登陆失败%@",aError.description);
+											}];
+	
 	
 }
 
+/** 注册  */
 - (IBAction)onClickRegisterBtn:(id)sender {
 	
 	BOOL isAutoLogin = [EMClient sharedClient].options.isAutoLogin;
-	if (!isAutoLogin) {
-		EMError *error = [[EMClient sharedClient] loginWithUsername:@"8001" password:@"111111"];
-		if (error==nil) {
-			NSLog(@"登陆成功");
-		}
+	
+	if (isAutoLogin) {
+		return;
 	}
+	
+	
+	[[EMClient sharedClient] asyncRegisterWithUsername:self.accountTF.text
+											  password:self.passwordTF.text
+											   success:^{
+												   NSLog(@"注册成功");
+											   }
+											   failure:^(EMError *aError) {
+												   NSLog(@"注册失败 %@",aError.description);
+											   }];
 	
 }
 
