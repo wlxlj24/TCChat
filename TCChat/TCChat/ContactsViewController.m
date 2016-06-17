@@ -8,10 +8,11 @@
 
 #import "ContactsViewController.h"
 #import <EMSDK.h>
+#import "TCAlertUtil.h"
 
 static NSString * const contactsCellId = @"contactsCellId";
 
-@interface ContactsViewController ()<UITableViewDelegate,UITableViewDataSource,EMClientDelegate>
+@interface ContactsViewController ()<UITableViewDelegate,UITableViewDataSource,EMClientDelegate,EMContactManagerDelegate>
 
 @property (nonatomic,readwrite,strong) NSArray *contactsArr;
 
@@ -23,24 +24,32 @@ static NSString * const contactsCellId = @"contactsCellId";
 
 -(void)dealloc{
 	[[EMClient sharedClient] removeDelegate:self];
+	[[EMClient sharedClient].contactManager removeDelegate:self];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
 	[[EMClient sharedClient] addDelegate:self delegateQueue:nil];
+	[[EMClient sharedClient].contactManager addDelegate:self delegateQueue:nil];
 	
-	self.contactsArr= [[EMClient sharedClient].contactManager getContactsFromDB];
-	if (self.contactsArr.count == 0) {
-		EMError *error = nil;
-		self.contactsArr = [[EMClient sharedClient].contactManager getContactsFromServerWithError:&error];
-		if (!error) {
-			NSLog(@"获取成功 -- %@",self.contactsArr);
-		}
-	}
+	[self tableViewHeaderRefresh];
 	
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:contactsCellId];
 	
+}
+
+
+-(void)tableViewHeaderRefresh{
+	
+	[[EMClient sharedClient].contactManager asyncGetContactsFromServer:^(NSArray *aList) {
+		self.contactsArr = aList;
+		NSLog(@"获取成功 -- %@",self.contactsArr);
+		[self.tableView reloadData];
+		
+	} failure:^(EMError *aError) {
+		NSLog(@"获取失败 -- %@",aError);
+	}];
 }
 
 #pragma mark <UITableViewDelegate,UITableViewDataSource>
@@ -55,6 +64,22 @@ static NSString * const contactsCellId = @"contactsCellId";
 	cell.textLabel.text = self.contactsArr[indexPath.row];
 	
 	return cell;
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+	
+	NSString *userName = self.contactsArr[indexPath.row];
+	
+	if (editingStyle == UITableViewCellEditingStyleDelete) {
+		[[EMClient sharedClient].contactManager asyncDeleteContact:userName
+														   success:^{
+															   NSLog(@"删除成功");
+															   [self.tableView reloadData];
+														   }
+														   failure:^(EMError *aError) {
+															   NSLog(@"删除失败");
+														   }];
+	}
 }
 
 /** 自动登录回调  */
@@ -75,6 +100,8 @@ static NSString * const contactsCellId = @"contactsCellId";
 		NSLog(@"登陆失败 %@",aError);
 	}
 }
+
+
 
 
 @end

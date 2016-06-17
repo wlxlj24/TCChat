@@ -17,9 +17,9 @@
 		9625EC621CFD556C00F10793 /* TCChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625EC611CFD556C00F10793 /* TCChatUITests.m */; };
 		9625EC711CFD617F00F10793 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625EC701CFD617F00F10793 /* LoginViewController.m */; };
 		9625EC761CFD65B200F10793 /* tabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625EC751CFD65B200F10793 /* tabBarController.m */; };
-		9625EC7C1CFD660D00F10793 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625EC7B1CFD660D00F10793 /* SettingViewController.m */; };
 		9625EC7F1CFD661800F10793 /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625EC7E1CFD661800F10793 /* ContactsViewController.m */; };
 		9625EC821CFD662100F10793 /* ConversionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625EC811CFD662100F10793 /* ConversionViewController.m */; };
+		9637CDEF1D13FD8B004FF376 /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637CDEE1D13FD8B004FF376 /* SettingTableViewController.m */; };
 		96C237841D128C2B006572AB /* AddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C237831D128C2B006572AB /* AddFriendViewController.m */; };
 		96C2378B1D129606006572AB /* TCAlertUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C2378A1D129606006572AB /* TCAlertUtil.m */; };
 /* End PBXBuildFile section */
@@ -62,12 +62,12 @@
 		9625EC701CFD617F00F10793 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		9625EC741CFD65B200F10793 /* tabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tabBarController.h; sourceTree = "<group>"; };
 		9625EC751CFD65B200F10793 /* tabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tabBarController.m; sourceTree = "<group>"; };
-		9625EC7A1CFD660D00F10793 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
-		9625EC7B1CFD660D00F10793 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		9625EC7D1CFD661800F10793 /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
 		9625EC7E1CFD661800F10793 /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
 		9625EC801CFD662100F10793 /* ConversionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversionViewController.h; sourceTree = "<group>"; };
 		9625EC811CFD662100F10793 /* ConversionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversionViewController.m; sourceTree = "<group>"; };
+		9637CDED1D13FD8B004FF376 /* SettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewController.h; sourceTree = "<group>"; };
+		9637CDEE1D13FD8B004FF376 /* SettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
 		96C237821D128C2B006572AB /* AddFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendViewController.h; sourceTree = "<group>"; };
 		96C237831D128C2B006572AB /* AddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendViewController.m; sourceTree = "<group>"; };
 		96C237891D129606006572AB /* TCAlertUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCAlertUtil.h; sourceTree = "<group>"; };
@@ -229,8 +229,8 @@
 		96C237791D128697006572AB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9625EC7A1CFD660D00F10793 /* SettingViewController.h */,
-				9625EC7B1CFD660D00F10793 /* SettingViewController.m */,
+				9637CDED1D13FD8B004FF376 /* SettingTableViewController.h */,
+				9637CDEE1D13FD8B004FF376 /* SettingTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -499,11 +499,11 @@
 				9625EC821CFD662100F10793 /* ConversionViewController.m in Sources */,
 				9625EC761CFD65B200F10793 /* tabBarController.m in Sources */,
 				9625EC7F1CFD661800F10793 /* ContactsViewController.m in Sources */,
+				9637CDEF1D13FD8B004FF376 /* SettingTableViewController.m in Sources */,
 				96C237841D128C2B006572AB /* AddFriendViewController.m in Sources */,
 				9625EC411CFD556C00F10793 /* AppDelegate.m in Sources */,
 				96C2378B1D129606006572AB /* TCAlertUtil.m in Sources */,
 				9625EC3E1CFD556C00F10793 /* main.m in Sources */,
-				9625EC7C1CFD660D00F10793 /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

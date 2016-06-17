@@ -14,6 +14,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (nonatomic,readwrite,strong) NSString *contactUserName;		//请求添加好友的 “好友名称”
+
 @end
 
 @implementation ConversionViewController
@@ -94,6 +96,29 @@
 	
 	[TCAlertUtil showAlertWithViewController:self title:@"好友请求" message:message];
 	
+}
+
+#pragma mark <EMContactManagerDelegate>
+/*!
+ *  用户B申请加A为好友后，用户A会收到这个回调
+ *  @param aUsername   用户B
+ *  @param aMessage    好友邀请信息
+ */
+- (void)didReceiveFriendInvitationFromUsername:(NSString *)aUsername
+									   message:(NSString *)aMessage{
+	self.contactUserName = aUsername;
+	
+	[TCAlertUtil showAlertWithViewController:self
+									   title:@"好友请求"
+									 message:[NSString stringWithFormat:@"%@请求添加你为好友",aUsername]
+							 leftAcitonTitle:@"拒绝"
+								 leftHandler:^{
+									 [[EMClient sharedClient].contactManager declineInvitationForUsername:aUsername];
+								 }
+							rightActionTitle:@"同意"
+								rightHandler:^{
+									[[EMClient sharedClient].contactManager acceptInvitationForUsername:aUsername];
+								}];
 }
 
 
